@@ -1,0 +1,131 @@
+/* Profile Page Container */
+.user-profile-page {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #121212;
+  color: white;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 220px;
+  background-color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo {
+  color: #ff8c42;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.nav-item {
+  color: #ddd;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 5px;
+  margin: 5px 0;
+  transition: background 0.3s, color 0.3s;
+  text-decoration: none;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background-color: #ff8c42;
+  color: white;
+}
+
+.logout {
+  margin-top: auto;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 90%;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+h1 {
+  color: #ff8c42;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #ff8c42;
+}
+
+.details p {
+  margin: 5px 0;
+  color: #ddd;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #ff8c42;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: #e67e22;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .user-profile-page {
+      flex-direction: column;
+  }
+  .sidebar {
+      width: 100%;
+      flex-direction: row;
+      overflow-x: auto;
+      white-space: nowrap;
+  }
+  .nav-item {
+      padding: 10px;
+      justify-content: center;
+      flex-direction: column;
+  }
+}

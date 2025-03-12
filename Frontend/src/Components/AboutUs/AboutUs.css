@@ -1,0 +1,145 @@
+/* About Us Container */
+.about-us-container {
+    font-family: 'Poppins', sans-serif;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background-color: #480b0b;
+    color: white;
+    padding: 50px 20px;
+    border-radius: 10px;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Mission and Vision */
+  .mission-vision {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+  }
+  
+  .mission, .vision {
+    width: 45%;
+    background-color: #531660;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  /* Team Section */
+  .team {
+    margin: 50px 0;
+  }
+  
+  .team h2 {
+    margin-bottom: 20px;
+  }
+  
+  .team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .team-member {
+    background-color: #983075;
+    padding: 15px;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+  }
+  
+  .team-member img {
+    width: 75px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .team-member h3 {
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+  
+  /* Timeline */
+  .timeline {
+    margin: 50px 0;
+  }
+  
+  .timeline h2 {
+    margin-bottom: 20px;
+  }
+  
+  .timeline ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .timeline li {
+    padding: 10px;
+    background-color: #144640;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .year {
+    font-weight: bold;
+    color: #ff8c42;
+  }
+  
+  /* Certifications */
+  .certifications {
+    margin: 50px 0;
+  }
+  
+  .certificates {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .certificates img {
+    width: 150px;
+    border-radius: 5px;
+  }
+  
+  /* Contact Information */
+  .contact-info {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px 0;
+  }
+  
+  .contact-info a {
+    color: #ff8c42;
+    text-decoration: none;
+  }
+  
+  /* Social Media */
+  .social-media {
+    margin-top: 30px;
+  }
+  
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .social-links a {
+    text-decoration: none;
+    color: #ff8c42;
+    font-weight: bold;
+  }
+  

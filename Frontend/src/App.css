@@ -1,0 +1,54 @@
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.listing-form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.listing-form label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.listing-form input,
+.listing-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.listing-form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.listing-form button:hover {
+  background-color: #0056b3;
+}
+
+.gallery {
+  margin-top: 20px;
+}
+
+.gallery-img {
+  max-width: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

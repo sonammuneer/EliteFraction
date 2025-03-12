@@ -1,0 +1,207 @@
+/* =============================== */
+/* Hero Banner (Swiper Container) */
+/* =============================== */
+.hero-banner {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.hero-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-slide {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+/* Keep text static (Only images slide) */
+.banner-slide h2 {
+  position: absolute;
+  bottom: 20%;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Ensure Swiper works properly */
+.swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Fix Pagination */
+.swiper-pagination-bullet {
+  background: white !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: white !important;
+}
+
+/* =============================== */
+/* Overview Section */
+/* =============================== */
+.overview {
+  text-align: center;
+  padding: 40px;
+  background-color: #440909;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* =============================== */
+/* Featured Products */
+/* =============================== */
+.featured-products {
+  text-align: center;
+  padding: 40px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.product-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.product {
+  width: 300px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.product img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* =============================== */
+/* Call-to-Action */
+/* =============================== */
+.cta {
+  text-align: center;
+  padding: 30px; /* Reduced height */
+  background: #333333; /* Updated to match uploaded image color */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cta h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.cta button {
+  padding: 12px 22px;
+  font-size: 1rem;
+  background: white;
+  color: #333333;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cta button:hover {
+  background: #f2f2f2;
+}
+
+/* =============================== */
+/* Testimonials Section */
+/* =============================== */
+.testimonials {
+  text-align: center;
+  padding: 40px;
+  background-color: #4e180c;
+  font-family: 'Poppins', sans-serif;
+}
+
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.testimonial {
+  width: 300px;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial p {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.testimonial h4 {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.add-testimonial-button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background: #ff5722;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 20px;
+}
+
+.add-testimonial-button:hover {
+  background: #e64a19;
+}
+
+/* =============================== */
+/* Investment Highlights */
+/* =============================== */
+.investment-highlights {
+  text-align: center;
+  padding: 40px;
+  background: #060000;
+  font-family: 'Poppins', sans-serif;
+}
+
+.investment-highlights ul {
+  list-style: none;
+  padding: 0;
+}
+
+.investment-highlights li {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}

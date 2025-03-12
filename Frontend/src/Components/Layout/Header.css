@@ -1,0 +1,151 @@
+/* General Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1.2rem;
+  background-color: #1a1a1a;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  font-family: 'Poppins', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 65px;
+}
+
+/* Ensure content is not hidden behind the header */
+body {
+  padding-top: 65px; /* Matches the header height */
+  background-color: #1a1a1a;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+/* Main Content Styling */
+.main-content {
+  margin-top: 65px; /* Additional safety margin */
+  padding: 1rem;
+  color: white;
+}
+
+/* Logo Styling */
+.logo img {
+  height: 50px; /* Adjusted height to fit within 65px header */
+  width: auto;
+  display: block;
+  padding-top: 5px; /* Center vertically */
+}
+
+/* Navigation Styling */
+.nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav ul li {
+  display: inline-block;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+  padding: 0.3rem 0.6rem;
+  display: inline-block;
+}
+
+.nav ul li a:hover {
+  color: #ff8c42;
+  transform: scale(1.05);
+}
+
+/* CTA Buttons Styling */
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-right: 1rem;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background-color: transparent;
+}
+
+.cta .cta-button {
+  background-color: #ff8c42;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cta .cta-button:hover {
+  background-color: #e76f51;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .header {
+    padding: 0.5rem 1rem;
+    height: 60px;
+  }
+
+  body {
+    padding-top: 60px; /* Matches the header height */
+  }
+
+  .nav ul {
+    gap: 0.8rem;
+  }
+
+  .cta {
+    gap: 0.5rem;
+  }
+
+  .cta .cta-button {
+    font-size: 0.75rem;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav ul {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .cta {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .cta .cta-button {
+    width: auto;
+    max-width: 160px;
+  }
+}

@@ -1,0 +1,36 @@
+/* Footer Styling */
+.footer {
+    background-color: #333; /* Dark background for the footer */
+    color: white; /* White text */
+    text-align: center; /* Center the text */
+    padding: 20px 0; /* Add some padding to the footer */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto; /* Center align the content */
+  }
+  
+  .footer p {
+    margin: 10px 0;
+    font-size: 1rem;
+  }
+  
+  .social-links {
+    margin-top: 10px;
+  }
+  
+  .social-links a {
+    color: #ff6600; /* Orange color for social links */
+    margin: 0 15px;
+    text-decoration: none; /* Remove underline */
+    font-size: 1.1rem;
+  }
+  
+  .social-links a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  

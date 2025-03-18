@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/navigation";
@@ -92,38 +93,20 @@ function Home() {
         </div>
       </section>
 
-      {/* Call-to-Action */}
       <section className="cta">
         <h2>Ready to Invest?</h2>
-        <button className="cta-button">Invest Now</button>
+        <Link to="/User/login" className="cta-button">Invest Now</Link>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="testimonials">
-        <h2>What Our Clients Say</h2>
-        <button className="add-testimonial-button">Add Testimonial</button>
-        <div className="testimonial-container">
-          {testimonials.length > 0 ? (
-            testimonials.map((testimonial, index) => (
-              <div key={index} className="testimonial">
-                <p>"{testimonial.message}"</p>
-                <h4>- {testimonial.name}</h4>
-              </div>
-            ))
-          ) : (
-            <p>No testimonials available yet.</p>
-          )}
-        </div>
-      </section>
 
       {/* Investment Highlights */}
       <section className="investment-highlights">
         <h2>Why Choose Fractional Ownership?</h2>
         <ul>
-          <li>✅ Lower cost of entry</li>
-          <li>✅ Access to high-value assets</li>
-          <li>✅ Passive income opportunities</li>
-          <li>✅ Reduced maintenance costs</li>
+          <li>Lower cost of entry</li>
+          <li>Access to high-value assets</li>
+          <li>Passive income opportunities</li>
+          <li>Reduced maintenance costs</li>
         </ul>
       </section>
     </div>

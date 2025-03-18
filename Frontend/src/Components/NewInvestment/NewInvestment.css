@@ -1,0 +1,88 @@
+.new-investment-page {
+    text-align: center;
+    padding: 8rem 2rem; /* Increased padding for better spacing */
+    background-color: #f8f9fa;
+  }
+  
+  h1 {
+    font-size: 28px;
+    color: #ff8c42;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Category Selection */
+  .category-selection {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .category-selection button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: #1a1a1a;
+    color: white;
+    border-radius: 6px;
+    transition: 0.3s;
+  }
+  
+  .category-selection button.active {
+    background-color: #ff8c42;
+  }
+  
+  /* Form Styling */
+  .investment-form {
+    width: 50%;
+    margin: auto;
+    background: white;
+    padding: 55px; /* Increased padding */
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .investment-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .investment-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  /* Image Preview */
+  .preview-image {
+    width: 100%;
+    max-height: 200px;
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Submit Button */
+  .submit-btn {
+    margin-top: 20px;
+    background-color: #e89607;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .submit-btn:hover {
+    background-color: #218838;
+  }
+  

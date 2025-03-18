@@ -10,25 +10,10 @@
   font-family: 'Poppins', sans-serif;
   position: fixed;
   top: 0;
-  left: 0;
+  left: 0; /* Fix: Corrected 'left' value */
   width: 100%;
   z-index: 1000;
   height: 65px;
-}
-
-/* Ensure content is not hidden behind the header */
-body {
-  padding-top: 65px; /* Matches the header height */
-  background-color: #1a1a1a;
-  overflow-x: hidden;
-  margin: 0;
-}
-
-/* Main Content Styling */
-.main-content {
-  margin-top: 65px; /* Additional safety margin */
-  padding: 1rem;
-  color: white;
 }
 
 /* Logo Styling */
@@ -36,7 +21,7 @@ body {
   height: 50px; /* Adjusted height to fit within 65px header */
   width: auto;
   display: block;
-  padding-top: 5px; /* Center vertically */
+  padding-top: 25px; /* Adjusted for better vertical alignment */
 }
 
 /* Navigation Styling */
@@ -55,6 +40,7 @@ body {
 }
 
 .nav ul li {
+  position: relative; /* Ensures dropdown positioning */
   display: inline-block;
 }
 
@@ -73,22 +59,56 @@ body {
   transform: scale(1.05);
 }
 
-/* CTA Buttons Styling */
+/* Dropdown Menu Fix */
+.nav ul li ul {
+  position: absolute;
+  top: 100%; /* Ensures dropdown appears below the header */
+  left: 0;
+  background-color: #1a1a1a;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 180px; /* Prevents it from being constrained */
+  display: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+}
+
+.nav ul li:hover ul {
+  display: block; /* Show dropdown on hover */
+}
+
+.nav ul li ul li {
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.nav ul li ul li a {
+  display: block;
+  color: white;
+  padding: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.nav ul li ul li a:hover {
+  background: #ff8c42;
+  color: #1a1a1a;
+}
+
+/* CTA Button Styling - Single Login/SignUp Button */
 .cta {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  margin-right: 1rem;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  background-color: transparent;
+  justify-content: flex-end;
+  margin-right: 1.5rem;
 }
 
+/* Login/SignUp button */
 .cta .cta-button {
   background-color: #ff8c42;
   color: #fff;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem; /* Adjusted padding for a more balanced look */
   border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 500;
@@ -97,7 +117,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 110px;
+  min-width: 100px; /* Ensures button has a consistent width */
+  height: 30px;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -127,8 +148,9 @@ body {
   }
 
   .cta .cta-button {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     min-width: 100px;
+    height: 35px;
   }
 }
 
@@ -146,6 +168,8 @@ body {
 
   .cta .cta-button {
     width: auto;
+    min-width: 100px;
     max-width: 160px;
+    height: 35px;
   }
 }

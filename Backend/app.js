@@ -3,13 +3,14 @@ const app = express();
 const errorMiddleware = require("./middleWare/error");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const fileUpload = require("express-fileupload"); // used for image and other files
+const fileUpload = require("express-fileupload");
 const path = require("path");
 const cors = require("cors");
 require("dotenv").config({ path: "./config/config.env" });
 
-// Importing Testimonial Routes
+// Importing Routes
 const testimonial = require("./route/testimonialRoute");
+const investment = require("./route/investmentRoute"); // ✅ Added investment routes
 
 // Middleware setup
 app.use(cookieParser());
@@ -20,10 +21,11 @@ app.use(fileUpload());
 app.use(cors());
 app.use(errorMiddleware);
 
-// Route for Testimonials
+// Mount Routes
 app.use("/api/v1", testimonial);
+app.use("/api/v1", investment); // ✅ Mount investment API
 
-// Serving static files (Frontend)
+// Serving static frontend files
 const __dirname1 = path.resolve();
 app.use(express.static(path.join(__dirname1, "/Frontend/build")));
 

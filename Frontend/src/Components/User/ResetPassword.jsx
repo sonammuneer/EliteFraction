@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetPassword, clearErrors } from "../../actions/userAction";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, useParams } from "react-router-dom";
-import MetaData from "../layouts/MataData/MataData";
-import CricketBallLoader from "../layouts/loader/Loader";
 import { Avatar, Button, TextField, Typography } from "@mui/material";
 import LockResetIcon from "@mui/icons-material/LockReset";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link } from "react-router-dom";
-import useStyles from "./LoginFromStyle";
 
 const ResetPassword = () => {
   const { token } = useParams(); // Get token from URL
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const classes = useStyles();
 
   const { error, success, loading } = useSelector((state) => state.forgetPassword);
 
@@ -42,7 +36,7 @@ const ResetPassword = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      toast.error("Passwords do not match!");
+      alert("Passwords do not match!"); // ✅ Simple alert instead of toast
       return;
     }
 
@@ -56,12 +50,12 @@ const ResetPassword = () => {
   // Handle Success & Errors
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      alert(error); // ✅ Simple alert for errors
       dispatch(clearErrors());
     }
 
     if (success) {
-      toast.success("Password updated successfully!");
+      alert("Password updated successfully!"); // ✅ Alert for success
       navigate("/login");
     }
   }, [dispatch, error, success, navigate]);
@@ -70,78 +64,67 @@ const ResetPassword = () => {
   const isSubmitDisabled = !(password && confirmPassword && isValidPassword);
 
   return (
-    <>
-      <MetaData title="Reset Password" />
-      {loading ? (
-        <CricketBallLoader />
-      ) : (
-        <div className={classes.formContainer}>
-          <form className={classes.form} onSubmit={resetPasswordSubmitHandler}>
-            <Avatar className={classes.avatar}>
-              <LockResetIcon />
-            </Avatar>
-            <Typography variant="h5" className={classes.heading}>
-              Reset Password
-            </Typography>
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+      <form style={{ width: "300px", padding: "20px", boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)", borderRadius: "10px" }} onSubmit={resetPasswordSubmitHandler}>
+        <Avatar style={{ margin: "auto", backgroundColor: "#1976d2" }}>
+          <LockResetIcon />
+        </Avatar>
+        <Typography variant="h5" style={{ textAlign: "center", marginBottom: "10px" }}>
+          Reset Password
+        </Typography>
 
-            <TextField
-              label="New Password"
-              variant="outlined"
-              type={showPassword ? "text" : "password"}
-              fullWidth
-              className={classes.textField}
-              value={password}
-              onChange={handlePasswordChange}
-              error={!isValidPassword && password !== ""}
-              helperText={!isValidPassword && password !== "" ? "Password must be at least 8 characters." : ""}
-              InputProps={{
-                endAdornment: (
-                  <Button variant="outlined" onClick={handleShowPasswordClick}>
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </Button>
-                ),
-              }}
-              style={{ marginTop: "1rem" }}
-            />
+        <TextField
+          label="New Password"
+          variant="outlined"
+          type={showPassword ? "text" : "password"}
+          fullWidth
+          value={password}
+          onChange={handlePasswordChange}
+          error={!isValidPassword && password !== ""}
+          helperText={!isValidPassword && password !== "" ? "Password must be at least 8 characters." : ""}
+          InputProps={{
+            endAdornment: (
+              <Button variant="outlined" onClick={handleShowPasswordClick}>
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </Button>
+            ),
+          }}
+          style={{ marginTop: "1rem" }}
+        />
 
-            <TextField
-              label="Confirm Password"
-              variant="outlined"
-              type={showPassword ? "text" : "password"}
-              fullWidth
-              className={classes.textField}
-              value={confirmPassword}
-              onChange={handleConfirmPasswordChange}
-              InputProps={{
-                endAdornment: (
-                  <Button variant="outlined" onClick={handleShowPasswordClick}>
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </Button>
-                ),
-              }}
-              style={{ marginTop: "1rem" }}
-            />
+        <TextField
+          label="Confirm Password"
+          variant="outlined"
+          type={showPassword ? "text" : "password"}
+          fullWidth
+          value={confirmPassword}
+          onChange={handleConfirmPasswordChange}
+          InputProps={{
+            endAdornment: (
+              <Button variant="outlined" onClick={handleShowPasswordClick}>
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </Button>
+            ),
+          }}
+          style={{ marginTop: "1rem" }}
+        />
 
-            <Button
-              type="submit"
-              variant="contained"
-              className={classes.loginButton}
-              fullWidth
-              disabled={isSubmitDisabled}
-              style={{ marginTop: "3.5rem" }}
-            >
-              Confirm New Password
-            </Button>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          disabled={isSubmitDisabled}
+          style={{ marginTop: "2rem" }}
+        >
+          Confirm New Password
+        </Button>
 
-            <Typography variant="body1" align="center" style={{ marginTop: ".5rem" }}>
-              <Link to="/login" className={classes.createAccount}>
-                Cancel
-              </Link>
-            </Typography>
-          </form>
-        </div>
-      )}
-    </>
+        <Typography variant="body1" align="center" style={{ marginTop: "1rem" }}>
+          <Link to="/login">Cancel</Link>
+        </Typography>
+      </form>
+    </div>
   );
 };
 

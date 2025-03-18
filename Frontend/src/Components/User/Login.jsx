@@ -1,16 +1,37 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // ✅ Import Link from react-router-dom
-import './Login.css';
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate for redirection
+import axios from "axios";
+import "./Login.css";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate(); // Hook for navigation after login
 
-    const handleLoginSubmit = (e) => {
+    const handleLoginSubmit = async (e) => {
         e.preventDefault();
-        console.log("Email:", email);
-        console.log("Password:", password);
-        alert(`Logged in with Email: ${email}`);
+        setError(""); // Clear previous errors
+
+        try {
+            console.log("➡️ Sending Login Data:", { email, password });
+
+            const response = await axios.post("http://localhost:5000/api/auth/login", {
+                email,
+                password
+            });
+
+            console.log("✅ Server Response:", response.data);
+
+            // Save token in local storage
+            localStorage.setItem("token", response.data.token);
+
+            // Redirect to profile/dashboard page
+            navigate("/User/UserProfilePage");
+        } catch (err) {
+            console.error("❌ Login Error:", err.response?.data?.message || err.message);
+            setError(err.response?.data?.message || "Login failed. Please try again.");
+        }
     };
 
     return (
@@ -18,11 +39,15 @@ const Login = () => {
             <div className="login-box">
                 <h2 className="login-title">Login</h2>
                 <p className="login-subtitle">Stay updated on your Fractional Ownership world</p>
+
+                {/* Show error message if login fails */}
+                {error && <p className="error-message">{error}</p>}
+
                 <form onSubmit={handleLoginSubmit} className="login-form">
                     <div>
                         <input
                             type="email"
-                            placeholder="Email or Phone"
+                            placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -39,13 +64,22 @@ const Login = () => {
                             className="login-input"
                         />
                     </div>
-                    <p className="forgot-password">Forgot password?</p>
+
+                    {/* Forgot Password Link */}
+                    <p className="forgot-password">
+                        <Link to="/User/ResetPassword" className="forgot-password-link">
+                            Forgot password?
+                        </Link>
+                    </p>
+
                     <button type="submit" className="sign-in-button">
                         Login
                     </button>
                 </form>
+
+                {/* Sign-up redirect */}
                 <p className="join-now">
-                    New to eliteFraction? <Link to="/User/SignUp" className="join-link">Join now</Link>
+                    New to EliteFraction? <Link to="/User/SignUp" className="join-link">Join now</Link>
                 </p>
             </div>
         </div>

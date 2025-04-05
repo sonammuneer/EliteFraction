@@ -1,12 +1,13 @@
 import React from "react";
-import "./AboutUs.css"; // Ensure correct CSS path
+import "./AboutUs.css";
+import heroImage from "../../Image/AboutUs/hero-image.jpg"; // Adjust the path according to your folder structure
 
 function AboutUs() {
   return (
     <div className="about-us-container">
       
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero" style={{ backgroundImage: `url(${heroImage})` }}>
         <div className="hero-overlay">
           <h1>About Us</h1>
           <p>Revolutionizing luxury asset ownership through innovation and fractional investments.</p>

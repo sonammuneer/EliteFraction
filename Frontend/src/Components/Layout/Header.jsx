@@ -9,10 +9,15 @@ const Header = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Check login state and update on initial render and on localStorage change
   useEffect(() => {
     const user = localStorage.getItem("user");
-    setIsLoggedIn(!!user);
-  }, []);
+    if (user) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [location.pathname]); // Trigger the effect when route changes
 
   const isAuthPage = ["/User/SignUp", "/User/Login"].includes(location.pathname);
 
@@ -57,10 +62,11 @@ const Header = () => {
         </ul>
       </nav>
       
+      {/* Conditionally render based on login state */}
       {!isAuthPage && (
         <div className="cta">
           {isLoggedIn ? (
-            <Link to="/dashboard" className="cta-button dashboard-button">Dashboard</Link>
+            <Link to="/User/UserProfilePage" className="cta-button dashboard-button">Dashboard</Link>
           ) : (
             <button onClick={handleAuthClick} className="cta-button auth-button">
               Login/SignUp

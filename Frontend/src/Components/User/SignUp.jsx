@@ -46,7 +46,7 @@ const SignUp = () => {
 
             if (response.ok) {
                 alert(`✅ Account created successfully for ${firstName} ${lastName}`);
-                // Reset the form fields
+                // Reset form fields
                 setFirstName("");
                 setLastName("");
                 setPosition("");
@@ -140,6 +140,7 @@ const SignUp = () => {
                         onChange={(e) => setInvitationCode(e.target.value)}
                         className="signup-input"
                     />
+
                     <button type="submit" className="signup-button" disabled={loading}>
                         {loading ? "Creating Account..." : "Submit"}
                     </button>

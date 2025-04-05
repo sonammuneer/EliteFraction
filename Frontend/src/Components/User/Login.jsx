@@ -16,6 +16,7 @@ const Login = () => {
         try {
             console.log("➡️ Sending Login Data:", { email, password });
 
+            // Make a login API call to your server (without JWT)
             const response = await axios.post("http://localhost:5000/api/auth/login", {
                 email,
                 password
@@ -23,11 +24,12 @@ const Login = () => {
 
             console.log("✅ Server Response:", response.data);
 
-            // Save token in local storage
-            localStorage.setItem("token", response.data.token);
+            // Save user data (excluding token) to localStorage
+            localStorage.setItem("user", JSON.stringify(response.data.user)); // Save user data directly
 
             // Redirect to profile/dashboard page
             navigate("/User/UserProfilePage");
+
         } catch (err) {
             console.error("❌ Login Error:", err.response?.data?.message || err.message);
             setError(err.response?.data?.message || "Login failed. Please try again.");

@@ -14,6 +14,12 @@ import UserProfilePage from "./Components/User/UserProfilePage";
 import FAQ from "./Components/FAQ/FAQ";
 import NewInvestment from "./Components/NewInvestment/NewInvestment";
 import ExploreInvestment from "./Components/ExploreInvestment/ExploreInvestment";
+import CommunityChatPage from './Components/CommunityChatPage/CommunityChatPage';
+import PricingPlans from './Components/PricingPlans/PricingPlans';
+import Payment from "./Components/Payment/Payment";
+import AnalyticsPage from "./Components/Analytics/AnalyticsPage";
+import UserManagement from "./Components/User/UserManagement";
+import MyInvestment from "./Components/MyInvestment/MyInvestment";
 
 console.log("App component rendered");
 
@@ -23,6 +29,7 @@ function App() {
       <div className="app-container">
         <Header /> {/* Header appears on every page */}
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
@@ -34,6 +41,12 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/new-investment" element={<NewInvestment />} />
           <Route path="/explore-investment" element={<ExploreInvestment />} />
+          <Route path="/community-chat" element={<CommunityChatPage />} />
+          <Route path="/pricing-benefits" element={<PricingPlans />} />
+          <Route path="/buy-credits" element={<Payment />} />
+          <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/user-management" element={<UserManagement />} />
+          <Route path="/my-investments" element={<MyInvestment />} /> 
         </Routes>
         <Footer />
       </div>

@@ -3,23 +3,28 @@ import "./NewInvestment.css";
 
 const NewInvestment = () => {
   const [selectedCategory, setSelectedCategory] = useState("luxury-cars");
+  const [activeTab, setActiveTab] = useState("basic");
   const [investmentData, setInvestmentData] = useState({
+    // Basic Information
     name: "",
-    price: "",
-    manufacturer: "",
-    engine: "",
-    horsepower: "",
-    topSpeed: "",
-    fuelType: "",
-    transmission: "",
+    category: "luxury-cars",
+    description: "",
+    price: "", // AUD
+    
+    // Investment Details
     investmentType: "fractional",
     sharesAvailable: "",
-    roi: "",
-    features: "",
-    mainImage: null,
-    gallery: [],
-    videoUrl: "",
-    pdf: null,
+    sharePrice: "", // AUD
+    minShares: 1,
+    expectedROI: "",
+    
+    // Operational Costs
+    annualCosts: "", // AUD
+    location: "",
+    
+    // Media
+    images: [],
+    videoUrl: ""
   });
 
   const categories = [
@@ -29,21 +34,14 @@ const NewInvestment = () => {
   ];
 
   const handleChange = (e) => {
-    setInvestmentData({ ...investmentData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setInvestmentData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleMainImageUpload = (e) => {
-    setInvestmentData({ ...investmentData, mainImage: URL.createObjectURL(e.target.files[0]) });
-  };
-
-  const handleGalleryUpload = (e) => {
+  const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
-    const newGallery = files.map(file => URL.createObjectURL(file));
-    setInvestmentData({ ...investmentData, gallery: [...investmentData.gallery, ...newGallery] });
-  };
-
-  const handlePdfUpload = (e) => {
-    setInvestmentData({ ...investmentData, pdf: e.target.files[0] });
+    const newImages = files.map(file => URL.createObjectURL(file));
+    setInvestmentData(prev => ({ ...prev, images: [...prev.images, ...newImages] }));
   };
 
   const handleSubmit = (e) => {
@@ -52,101 +50,261 @@ const NewInvestment = () => {
     alert("Investment Successfully Created!");
   };
 
-  return (
-    <div className="new-investment-page">
-      <h1>Create a New Investment</h1>
-
-      <div className="category-selection">
-        {categories.map((category) => (
-          <button
-            key={category.id}
-            className={selectedCategory === category.id ? "active" : ""}
-            onClick={() => setSelectedCategory(category.id)}
-          >
-            {category.name}
-          </button>
-        ))}
+  const renderBasicInfoTab = () => (
+    <div className="form-tab">
+      <div className="form-group">
+        <label>Category*</label>
+        <div className="category-buttons">
+          {categories.map(category => (
+            <button
+              key={category.id}
+              type="button"
+              className={selectedCategory === category.id ? "active" : ""}
+              onClick={() => {
+                setSelectedCategory(category.id);
+                setInvestmentData(prev => ({ ...prev, category: category.id }));
+              }}
+            >
+              {category.name}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <form className="investment-form" onSubmit={handleSubmit}>
-        <label>Investment Name:</label>
-        <input type="text" name="name" value={investmentData.name} onChange={handleChange} required />
+      <div className="form-group">
+        <label>Asset Name*</label>
+        <input
+          type="text"
+          name="name"
+          value={investmentData.name}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      
+      <div className="form-group">
+        <label>Description*</label>
+        <textarea
+          name="description"
+          value={investmentData.description}
+          onChange={handleChange}
+          required
+          rows="5"
+        />
+      </div>
+      
+      <div className="form-group">
+        <label>Total Value (AUD)*</label>
+        <input
+          type="number"
+          name="price"
+          value={investmentData.price}
+          onChange={handleChange}
+          required
+        />
+      </div>
+    </div>
+  );
 
-        <label>Price:</label>
-        <input type="text" name="price" value={investmentData.price} onChange={handleChange} required />
-
-        <label>Manufacturer:</label>
-        <input type="text" name="manufacturer" value={investmentData.manufacturer} onChange={handleChange} required />
-
-        {selectedCategory === "luxury-cars" && (
-          <>
-            <label>Engine Type:</label>
-            <input type="text" name="engine" value={investmentData.engine} onChange={handleChange} required />
-
-            <label>Horsepower (HP):</label>
-            <input type="text" name="horsepower" value={investmentData.horsepower} onChange={handleChange} required />
-
-            <label>Top Speed (km/h):</label>
-            <input type="text" name="topSpeed" value={investmentData.topSpeed} onChange={handleChange} required />
-
-            <label>Fuel Type:</label>
-            <input type="text" name="fuelType" value={investmentData.fuelType} onChange={handleChange} required />
-
-            <label>Transmission:</label>
-            <input type="text" name="transmission" value={investmentData.transmission} onChange={handleChange} required />
-          </>
-        )}
-
-        <label>Investment Type:</label>
-        <select name="investmentType" value={investmentData.investmentType} onChange={handleChange}>
+  const renderInvestmentDetailsTab = () => (
+    <div className="form-tab">
+      <div className="form-group">
+        <label>Investment Type*</label>
+        <select
+          name="investmentType"
+          value={investmentData.investmentType}
+          onChange={handleChange}
+          required
+        >
           <option value="fractional">Fractional Ownership</option>
           <option value="full">Full Purchase</option>
         </select>
+      </div>
+      
+      {investmentData.investmentType === "fractional" && (
+        <>
+          <div className="form-row">
+            <div className="form-group">
+              <label>Total Shares*</label>
+              <input
+                type="number"
+                name="sharesAvailable"
+                value={investmentData.sharesAvailable}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            
+            <div className="form-group">
+              <label>Share Price (AUD)*</label>
+              <input
+                type="number"
+                name="sharePrice"
+                value={investmentData.sharePrice}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+          
+          <div className="form-row">
+            <div className="form-group">
+              <label>Min Shares*</label>
+              <input
+                type="number"
+                name="minShares"
+                value={investmentData.minShares}
+                onChange={handleChange}
+                required
+                min="1"
+              />
+            </div>
+            
+            <div className="form-group">
+              <label>Expected ROI (%)*</label>
+              <input
+                type="number"
+                name="expectedROI"
+                value={investmentData.expectedROI}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+        </>
+      )}
+      
+      <div className="form-group">
+        <label>Annual Costs (AUD)*</label>
+        <input
+          type="number"
+          name="annualCosts"
+          value={investmentData.annualCosts}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      
+      <div className="form-group">
+        <label>Location*</label>
+        <input
+          type="text"
+          name="location"
+          value={investmentData.location}
+          onChange={handleChange}
+          required
+        />
+      </div>
+    </div>
+  );
 
-        {investmentData.investmentType === "fractional" && (
-          <>
-            <label>Shares Available:</label>
-            <input type="text" name="sharesAvailable" value={investmentData.sharesAvailable} onChange={handleChange} required />
-          </>
-        )}
-
-        <label>Expected ROI / Benefits:</label>
-        <input type="text" name="roi" value={investmentData.roi} onChange={handleChange} required />
-
-        <label>Key Features (comma separated):</label>
-        <input type="text" name="features" value={investmentData.features} onChange={handleChange} required />
-
-        <label>Upload Main Image:</label>
-        <input type="file" accept="image/*" onChange={handleMainImageUpload} required />
-        {investmentData.mainImage && <img src={investmentData.mainImage} alt="Main Preview" className="preview-image" />}
-
-        <label>Upload Gallery Images:</label>
-        <input type="file" accept="image/*" multiple onChange={handleGalleryUpload} />
-        <div className="image-gallery">
-          {investmentData.gallery.map((img, index) => (
-            <img key={index} src={img} alt={`Gallery ${index}`} className="gallery-image" />
+  const renderMediaTab = () => (
+    <div className="form-tab">
+      <div className="form-group">
+        <label>Images*</label>
+        <input
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={handleImageUpload}
+          required
+        />
+        <div className="image-preview">
+          {investmentData.images.map((img, index) => (
+            <div key={index} className="preview-item">
+              <img src={img} alt={`Preview ${index}`} />
+              <button 
+                type="button" 
+                onClick={() => setInvestmentData(prev => ({
+                  ...prev,
+                  images: prev.images.filter((_, i) => i !== index)
+                }))}
+              >
+                ×
+              </button>
+            </div>
           ))}
         </div>
+      </div>
+      
+      <div className="form-group">
+        <label>Video URL</label>
+        <input
+          type="url"
+          name="videoUrl"
+          value={investmentData.videoUrl}
+          onChange={handleChange}
+          placeholder="https://example.com/video"
+        />
+      </div>
+    </div>
+  );
 
-        <label>YouTube Video URL:</label>
-        <input type="text" name="videoUrl" value={investmentData.videoUrl} onChange={handleChange} />
-        {investmentData.videoUrl && (
-          <iframe
-            width="100%"
-            height="200"
-            src={investmentData.videoUrl.replace("watch?v=", "embed/")}
-            title="YouTube Video"
-            frameBorder="0"
-            allowFullScreen
-          ></iframe>
-        )}
+  // Tab navigation
+  const tabs = [
+    { id: "basic", label: "Basic Info" },
+    { id: "investment", label: "Investment" },
+    { id: "media", label: "Media" }
+  ];
 
-        <label>Upload PDF (Brochure/Details):</label>
-        <input type="file" accept="application/pdf" onChange={handlePdfUpload} required />
-        {investmentData.pdf && <p>PDF Uploaded: {investmentData.pdf.name}</p>}
+  const renderTabContent = () => {
+    switch(activeTab) {
+      case "basic": return renderBasicInfoTab();
+      case "investment": return renderInvestmentDetailsTab();
+      case "media": return renderMediaTab();
+      default: return null;
+    }
+  };
 
-        <button type="submit" className="submit-btn">Create Investment</button>
-      </form>
+  return (
+    <div className="new-investment-page">
+      <h1>Create New Investment</h1>
+      
+      <div className="form-tabs">
+        <div className="tab-header">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              className={activeTab === tab.id ? "active" : ""}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+        
+        <form onSubmit={handleSubmit}>
+          {renderTabContent()}
+          
+          <div className="form-actions">
+            {activeTab !== "basic" && (
+              <button 
+                type="button" 
+                onClick={() => {
+                  const currentIndex = tabs.findIndex(t => t.id === activeTab);
+                  setActiveTab(tabs[currentIndex - 1].id);
+                }}
+              >
+                Previous
+              </button>
+            )}
+            
+            {activeTab !== "media" ? (
+              <button 
+                type="button" 
+                onClick={() => {
+                  const currentIndex = tabs.findIndex(t => t.id === activeTab);
+                  setActiveTab(tabs[currentIndex + 1].id);
+                }}
+              >
+                Next
+              </button>
+            ) : (
+              <button type="submit">Create Investment</button>
+            )}
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

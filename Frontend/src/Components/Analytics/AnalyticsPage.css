@@ -1,0 +1,45 @@
+.analytics-page {
+    padding: 20px;
+    background-color: #121212;
+    color: white;
+}
+
+.analytics-page h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: orange;
+}
+
+.admin-analytics, .user-analytics {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    background-color: #1f1f1f;
+}
+
+.card h2 {
+    margin: 10px 0;
+    color: orange;
+}
+
+.card p, .card ul {
+    color: white;
+}
+
+.card ul li {
+    margin: 5px 0;
+}

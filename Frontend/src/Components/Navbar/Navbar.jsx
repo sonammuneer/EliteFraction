@@ -15,6 +15,7 @@ const Navbar = () => {
         <li><Link to="/user/signup">Sign Up</Link></li>
         <li><Link to="/user/login">Login</Link></li>
         <li><Link to="/User/ResetPassword">Reset Password</Link></li>
+        <li><Link to="/community-chat">Community Chat</Link></li>        
       </ul>
     </nav>
   );

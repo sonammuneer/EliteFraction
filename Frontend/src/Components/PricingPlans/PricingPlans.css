@@ -1,0 +1,96 @@
+/* PricingPlans.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.pricing-plans-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.tabs button {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tabs button:hover, .tabs button.active {
+    color: #ff6600;
+    border-bottom: 2px solid #ff6600;
+}
+
+.pricing-plans {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.plan-card {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    transition: transform 0.3s, background-color 0.3s;
+    border-left: 4px solid #ff6600;
+}
+
+.plan-card:hover {
+    background-color: #292929;
+    transform: scale(1.05);
+}
+
+.plan-card h2 {
+    color: #ff6600;
+    margin-bottom: 10px;
+}
+
+.plan-card p {
+    color: #d3d3d3;
+    margin-bottom: 15px;
+}
+
+.plan-card ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.plan-card ul li {
+    padding: 5px 0;
+    color: white;
+}
+
+.invest-now {
+    background-color: #ff6600;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.invest-now:hover {
+    background-color: white;
+    color: black;
+}
